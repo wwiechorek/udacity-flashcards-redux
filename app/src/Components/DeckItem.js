@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { white } from '../utils/_color'
 
 
@@ -8,14 +8,16 @@ export default class DeckItem extends Component {
     render() {
         const { title, questions } = this.props.data
         return (
-            <View style={ styles.item }>
-                <Text style={ styles.title }>
-                    {title}
-                </Text>
-                <Text style={ styles.subtitle }>
-                    {questions.length} cards
-                </Text>
-            </View>
+            <TouchableOpacity onPress={ () => this.props.handleClick(title) }>
+                <View style={ styles.item }>
+                    <Text style={ styles.title }>
+                        {title}
+                    </Text>
+                    <Text style={ styles.subtitle }>
+                        {questions.length} cards
+                    </Text>
+                </View>
+            </TouchableOpacity>
         )
     }
 }

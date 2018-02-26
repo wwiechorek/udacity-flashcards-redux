@@ -9,24 +9,25 @@ import {
     } from 'react-native'
 import { Constants } from 'expo'
 
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
 
 import ListDecks from './Components/ListDecks'
 import CreateDeck from './Components/CreateDeck'
 import { setLocalNotification } from './utils/helpers'
 import { yellow, black, gray, white } from './utils/_color'
+import DeckView from './Components/DeckView'
 
 const Tabs = TabNavigator({
   List: {
-    screen: () => <ListDecks />,
+    screen: ListDecks,
     navigationOptions: {
         tabBarLabel: 'Decks',
         tabBarIcon: () => <FontAwesome name='th-list' size={30} color={black} />
     }
   },
   Create: {
-    screen: () => <CreateDeck />,
+    screen: CreateDeck,
     navigationOptions: {
         tabBarLabel: 'New deck',
         tabBarIcon: () => <FontAwesome name='file' size={30} color={black} />
@@ -52,6 +53,21 @@ const Tabs = TabNavigator({
   }
 })
 
+const MainNavigator = StackNavigator({
+    Home: {
+        screen: Tabs
+    },
+    DeckDetail: {
+        screen: DeckView,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: black,
+            }
+        }
+    }
+})
+
 class Index extends React.Component {
     componentDidMount() {
         this.props.getDecks()
@@ -68,7 +84,7 @@ class Index extends React.Component {
                       backgroundColor={statusBarBackground}
                       barStyle="light-content" />
                 </View>
-                <Tabs />
+                <MainNavigator />
             </View>
         )
     }

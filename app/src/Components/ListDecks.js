@@ -17,7 +17,15 @@ class ListDecks extends React.Component {
                     keyExtractor={(item, index) => index}
                     renderItem={({item}) => {
                         let deck = this.props.decks[item]
-                        return <DeckItem key={deck.title} data={ deck } />
+                        return <DeckItem
+                                key={deck.title}
+                                data={ deck }
+                                handleClick={ id => {
+                                    this.props.navigation.navigate(
+                                        'DeckDetail',
+                                        { id }
+                                    )
+                                }} />
                     }}
                 />
 

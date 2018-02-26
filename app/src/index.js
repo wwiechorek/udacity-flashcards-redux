@@ -17,6 +17,7 @@ import CreateDeck from './Components/CreateDeck'
 import { setLocalNotification } from './utils/helpers'
 import { yellow, black, gray, white } from './utils/_color'
 import DeckView from './Components/DeckView'
+import CreateCard from './Components/CreateCard'
 
 const Tabs = TabNavigator({
   List: {
@@ -59,6 +60,15 @@ const MainNavigator = StackNavigator({
     },
     DeckDetail: {
         screen: DeckView,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: black,
+            }
+        }
+    },
+    CreateCard: {
+        screen: CreateCard,
         navigationOptions: {
             headerTintColor: white,
             headerStyle: {

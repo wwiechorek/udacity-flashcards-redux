@@ -7,7 +7,10 @@ import DeckItem from './DeckItem'
 class ListDecks extends React.Component {
 
     render() {
-        let data = Object.keys( this.props.decks )
+        let data = []
+        if(this.props.decks)
+            data = Object.keys( this.props.decks )
+        
 
         return (
             <View style={{ flex: 1 }}>

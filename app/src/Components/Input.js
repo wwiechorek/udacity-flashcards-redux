@@ -3,11 +3,12 @@ import { Text, StyleSheet, TextInput } from 'react-native'
 
 export default class Input extends React.Component {
     render() {
-        const { onChangeText, style, value } = this.props
+        const { onChangeText, style, value, placeholder } = this.props
         return (
             <TextInput style={[ styles.input, style ]}
                 onChangeText={ onChangeText }
-                value={value} />
+                value={value}
+                placeholder={placeholder || ''} />
         )
     }
 }

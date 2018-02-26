@@ -21,7 +21,13 @@ class DeckView extends Component {
                     borderWidth: 1,
                     color: '#000',
                     borderColor: '#000',
-                    marginBottom: 10
+                    marginBottom: 10,
+                }}
+                onPress={() => {
+                    this.props.navigation.navigate(
+                        'CreateCard',
+                        { id: deck.title }
+                    )
                 }}>
                     Add Card
                 </TextButton>

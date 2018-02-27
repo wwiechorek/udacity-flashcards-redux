@@ -18,6 +18,7 @@ import { setLocalNotification } from './utils/helpers'
 import { yellow, black, gray, white } from './utils/_color'
 import DeckView from './Components/DeckView'
 import CreateCard from './Components/CreateCard'
+import Quiz from './Components/Quiz'
 
 const Tabs = TabNavigator({
   List: {
@@ -69,6 +70,15 @@ const MainNavigator = StackNavigator({
     },
     CreateCard: {
         screen: CreateCard,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: black,
+            }
+        }
+    },
+    Quiz: {
+        screen: Quiz,
         navigationOptions: {
             headerTintColor: white,
             headerStyle: {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { saveDeckTitle } from '../store/actions/decks'
+import { addCardToDeck } from '../store/actions/decks'
 
 import { StyleSheet, Text, View} from 'react-native'
 import { yellow, black, white } from '../utils/_color'
@@ -20,18 +20,23 @@ class CreateDeck extends React.Component {
     }
 
     onSubmit() {
-        // const { text } = this.state
-        // if(text === '') return
+        const { question, answer } = this.state
+        if(question === '' || answer === '') return
 
 
 
-        // this.props.saveDeckTitle( this.state.text )
-        // .then( data => {
-        //     alert('Card added in deck')
-        // })
-        // this.setState({
-        //     text: ''
-        // })
+        this.props.addCardToDeck({
+                deck: this.props.navigation.state.params.id,
+                question: this.state.question,
+                answer: this.state.answer
+            })
+        .then( data => {
+            alert('Card added in deck')
+        })
+        this.setState({
+            question: '',
+            answer: ''
+        })
     }
 
     render() {
@@ -45,7 +50,7 @@ class CreateDeck extends React.Component {
                     value={this.state.question} />
 
                 <Input
-                    placeholder='Answer'                
+                    placeholder='Answer'
                     onChangeText={(answer) => this.setState({answer})}
                     value={this.state.answer} />
 
@@ -72,7 +77,7 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = {
-    saveDeckTitle
+    addCardToDeck
 }
 
 export default connect( mapStateToProps, mapDispatchToProps )( CreateDeck )

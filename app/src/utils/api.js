@@ -35,14 +35,14 @@ export const saveDeckTitle = title => {
 
 
 export const saveCardToDeck = (title, card) => {
-    getDeck(title)
+    return getDeck(title)
     .then( deck => {
         deck.questions.push(card)
 
-        return getDecks()
+        getDecks()
         .then(decks => {
             decks[title] = deck
-            return AsyncStorage.setItem(DECKS_STORAGE_KEYS, JSON.stringify(decks))
+            AsyncStorage.setItem(DECKS_STORAGE_KEYS, JSON.stringify(decks))
         })
     })
 }

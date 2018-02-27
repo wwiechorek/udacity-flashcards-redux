@@ -1,6 +1,7 @@
 import {
     LOADED_DECKS,
     SAVED_DECK_TITLE,
+    SAVED_CARD_TO_DECK,
 } from '../actions/decks'
 
 const initialState = {
@@ -23,6 +24,19 @@ export default ( state = initialState, action ) =>  {
                 data: {
                     ...state.data,
                     [payload.title]: payload
+                }
+            }
+        }
+
+        case SAVED_CARD_TO_DECK: {
+            let deck = state.data[payload.deck]
+            deck.questions.push(payload.card)
+
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    [payload.deck]: deck
                 }
             }
         }

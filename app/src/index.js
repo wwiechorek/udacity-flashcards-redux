@@ -12,13 +12,14 @@ import { Constants } from 'expo'
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import { FontAwesome } from '@expo/vector-icons'
 
-import ListDecks from './Components/ListDecks'
-import CreateDeck from './Components/CreateDeck'
 import { setLocalNotification } from './utils/helpers'
 import { yellow, black, gray, white } from './utils/_color'
-import DeckView from './Components/DeckView'
-import CreateCard from './Components/CreateCard'
-import Quiz from './Components/Quiz'
+import ListDecks from './Screens/ListDecks'
+import CreateDeck from './Screens/CreateDeck'
+import DeckView from './Screens/DeckView'
+import CreateCard from './Screens/CreateCard'
+import Quiz from './Screens/Quiz'
+
 
 const Tabs = TabNavigator({
   List: {
@@ -104,7 +105,9 @@ class Index extends React.Component {
                       backgroundColor={statusBarBackground}
                       barStyle="light-content" />
                 </View>
+
                 <MainNavigator />
+
             </View>
         )
     }

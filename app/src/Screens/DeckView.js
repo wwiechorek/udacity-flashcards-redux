@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, StyleSheet } from 'react-native'
-import TextButton from './TextButton'
+import TextButton from '../Components/TextButton'
 
 class DeckView extends Component {
     static navigationOptions = ({ navigation }) => {

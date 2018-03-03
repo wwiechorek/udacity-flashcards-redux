@@ -2,6 +2,7 @@ import {
     LOADED_DECKS,
     SAVED_DECK_TITLE,
     SAVED_CARD_TO_DECK,
+    CLEAR_ALL_DATA
 } from '../actions/decks'
 
 const initialState = {
@@ -38,6 +39,12 @@ export default ( state = initialState, action ) =>  {
                     ...state.data,
                     [payload.deck]: deck
                 }
+            }
+        }
+
+        case CLEAR_ALL_DATA: {
+            return {
+                data: {}
             }
         }
 

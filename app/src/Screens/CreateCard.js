@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addCardToDeck } from '../store/actions/decks'
 
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { yellow, black, white } from '../utils/_color'
-import TextButton from './TextButton'
-import Input from './Input'
+import TextButton from '../Components/TextButton'
+import Input from '../Components/Input'
 
 class CreateDeck extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -24,14 +24,14 @@ class CreateDeck extends React.Component {
         if(question === '' || answer === '') return
 
 
-
+        let deckId = this.props.navigation.state.params.id
         this.props.addCardToDeck({
-                deck: this.props.navigation.state.params.id,
+                deck: deckId,
                 question: this.state.question,
                 answer: this.state.answer
             })
-        .then( data => {
-            alert('Card added in deck')
+        .then( () => {
+            this.props.navigation.goBack()
         })
         this.setState({
             question: '',

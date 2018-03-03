@@ -4,8 +4,8 @@ import { Text, View } from 'react-native'
 
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
-import Result from './Result'
-import Card from './Card'
+import Result from '../Components/Result'
+import Card from '../Components/Card'
 
 class Quiz extends Component {
 

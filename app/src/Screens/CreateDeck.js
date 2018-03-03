@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { saveDeckTitle } from '../store/actions/decks'
 
-import { StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { yellow, black, white } from '../utils/_color'
-import TextButton from './TextButton'
-import Input from './Input'
+import TextButton from '../Components/TextButton'
+import Input from '../Components/Input'
 
 class CreateDeck extends React.Component {
     state = {
@@ -16,11 +16,13 @@ class CreateDeck extends React.Component {
         const { text } = this.state
         if(text === '') return
 
-
-
         this.props.saveDeckTitle( this.state.text )
         .then( data => {
-            alert('Title saved deck')
+
+            this.props.navigation.navigate(
+                'DeckDetail',
+                { id: data.title }
+            )
         })
         this.setState({
             text: ''

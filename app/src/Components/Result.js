@@ -13,7 +13,6 @@ class Result extends Component {
             .start()
     }
 
-
     render() {
         const { fontSize } = this.state
         const { hits, total } = this.props

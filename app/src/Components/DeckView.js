@@ -31,14 +31,16 @@ class DeckView extends Component {
                 }}>
                     Add Card
                 </TextButton>
-                <TextButton
-                    onPress={() => {
-                        this.props.navigation.navigate(
-                            'Quiz',
-                            { id: deck.title }
-                        )
-                    }}>
-                    Start Quiz</TextButton>
+                { deck.questions.length > 0 && (
+                    <TextButton
+                        onPress={() => {
+                            this.props.navigation.navigate(
+                                'Quiz',
+                                { id: deck.title }
+                            )
+                        }}>
+                        Start Quiz</TextButton>
+                )}
             </View>
         )
     }
